@@ -1,5 +1,12 @@
 fileFormatVersion: 2
 guid: f6ebaa94097f3da47a01d47be07f26f3
+AssetOrigin:
+  serializedVersion: 1
+  productId: 304754
+  packageName: Sport Car Free
+  packageVersion: 2.0
+  assetPath: Assets/SportCar/Models/SportCar_1/SportCar_1.FBX
+  uploadId: 779397
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
@@ -105,10 +112,3 @@ ModelImporter:
   userData: 
   assetBundleName: 
   assetBundleVariant: 
-AssetOrigin:
-  serializedVersion: 1
-  productId: 304754
-  packageName: Sport Car Free
-  packageVersion: 2.0
-  assetPath: Assets/SportCar/Models/SportCar_1/SportCar_1.FBX
-  uploadId: 779397
