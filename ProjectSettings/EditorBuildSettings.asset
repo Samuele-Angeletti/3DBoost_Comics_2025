@@ -6,8 +6,23 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/SampleScene.unity
+    path: Assets/Scenes/MainScene.unity
     guid: 99c9720ab356a0642a771bea13969a05
+  - enabled: 1
+    path: Assets/Scenes/Quartiere1.unity
+    guid: 9e81fe1e71e9c674da13611326f4da8d
+  - enabled: 1
+    path: Assets/Scenes/Quartiere2.unity
+    guid: 97e1904b8991633499a9e394590044d5
+  - enabled: 1
+    path: Assets/Scenes/Quartiere3.unity
+    guid: 123d259e3ee02de4f8c628f375b17651
+  - enabled: 1
+    path: Assets/Scenes/Quartiere4.unity
+    guid: 2f0dcab0233a7114385862241ffccd03
+  - enabled: 1
+    path: Assets/Scenes/RestaurantInterior.unity
+    guid: 3aaae5bd07bea4e418525563db8a03ac
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   m_UseUCBPForAssetBundles: 0
