@@ -6,6 +6,7 @@
         Walk,
         EnterCar,
         Drive,
-        ExitCar
+        ExitCar,
+        WalkAgent
     }
 }

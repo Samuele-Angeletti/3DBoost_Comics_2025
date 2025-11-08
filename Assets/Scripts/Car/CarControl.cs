@@ -1,10 +1,14 @@
+using Assets.Scripts.Interfaces;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 namespace Assets.Scripts.Car
 {
-    public class CarControl : MonoBehaviour
+    public class CarControl : MonoBehaviour, IControllable
     {
+        [field: SerializeField] public Transform AccessPivot { get; private set; }
+        [field: SerializeField] public Transform DrivePivot { get; private set; }
+
         [Header("Car Settings")]
         [SerializeField] float motorTorque = 2000f;
         [SerializeField] float brakeTorque = 2000f;
@@ -18,40 +22,37 @@ namespace Assets.Scripts.Car
 
         Rigidbody rigidBody;
 
-        InputSystem_Actions inputActions;
+        //InputSystem_Actions inputActions;
         Vector2 inputVector;
         bool inputCanceled;
         private void Awake()
         {
-            inputActions = new InputSystem_Actions();
+            //inputActions = new InputSystem_Actions();
 
-            inputActions.Player.Move.performed += Move_performed;
-            inputActions.Player.Move.canceled += Move_canceled;
+            //inputActions.Player.Move.performed += Move_performed;
+            //inputActions.Player.Move.canceled += Move_canceled;
         }
 
-        private void Move_canceled(InputAction.CallbackContext obj)
-        {
-            inputVector = Vector3.Dot(transform.forward, rigidBody.linearVelocity) > 0 
-                ? Vector2.down 
-                : Vector2.up;
-            inputCanceled = true;
-        }
+        //private void Move_canceled(InputAction.CallbackContext obj)
+        //{
+            
+        //}
 
-        private void Move_performed(InputAction.CallbackContext obj)
-        {
-            inputVector = obj.ReadValue<Vector2>();
-            inputCanceled = false;
-        }
+        //private void Move_performed(InputAction.CallbackContext obj)
+        //{
+        //    inputVector = obj.ReadValue<Vector2>();
+        //    inputCanceled = false;
+        //}
 
-        private void OnEnable()
-        {
-            inputActions.Enable();
-        }
+        //private void OnEnable()
+        //{
+        //    inputActions.Enable();
+        //}
 
-        private void OnDisable()
-        {
-            inputActions.Disable();
-        }
+        //private void OnDisable()
+        //{
+        //    inputActions.Disable();
+        //}
         private void Update()
         {
             if (inputCanceled && rigidBody.linearVelocity.magnitude < 0.1f)
@@ -116,5 +117,22 @@ namespace Assets.Scripts.Car
                 }
             }
         }
+
+        public void Move(Vector3 direction)
+        {
+            inputVector = direction;
+            inputCanceled = false;
+        }
+
+        public void MoveCanceled()
+        {
+            inputVector = Vector3.Dot(transform.forward, rigidBody.linearVelocity) > 0
+                ? Vector2.down
+                : Vector2.up;
+            inputCanceled = true;
+        }
+
+        public void Interact()
+        { }
     }
 }

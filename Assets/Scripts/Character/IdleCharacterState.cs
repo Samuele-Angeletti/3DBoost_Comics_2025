@@ -21,6 +21,15 @@ namespace Assets.Scripts.Character
 
         public override void OnUpdate()
         {
+            if (_owner.InteractionRequest)
+            {
+                _owner.SetNearestCar();
+                if (_owner.CurrentCar != null)
+                {
+                    _owner.SetWalkAgent();
+                    return;
+                }
+            }
         }
 
         public override void OnFixedUpdate()

@@ -24,6 +24,9 @@ namespace Assets.Scripts.Character
 
         public override void OnUpdate()
         {
+            // TODO: SE HO RAGGIUNTO IL PIVOT, ALLORA RUOTARE IL PERSONAGGIO FINO AL DRIVE PIVOT DELLA MACCHINA
+            // SENZA CAMBIARE STATO
+
             _timePassed += Time.deltaTime;
             if (_timePassed >= _clipLength)
             {
