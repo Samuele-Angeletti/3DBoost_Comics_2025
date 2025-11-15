@@ -1,5 +1,5 @@
-﻿using UnityEngine;
-using UnityEngine.AI;
+﻿using Assets.Scripts.Extensions;
+using UnityEngine;
 
 namespace Assets.Scripts.Character
 {
@@ -23,17 +23,16 @@ namespace Assets.Scripts.Character
 
         public override void OnUpdate()
         {
-            // se l'utente preme spazio, allora annulla l'operazione
-            // TODO:...
-
-            if (_owner.Agent.pathStatus == NavMeshPathStatus.PathComplete)
+            if (_owner.Agent.IsAgentStopped(0.5f))
             {
-                // ho raggiunto la destinazione
+                _owner.transform.rotation = 
+                    Quaternion.RotateTowards(
+                        _owner.transform.rotation, _owner.CurrentCar.AccessPivot.rotation, _owner.rotationSpeed * Time.deltaTime);
 
-                // TODO: QUI FARE IN MODO CHE L'OWNER SI GIRI FINO ALLA STESSA ROTAZIONE DELL'ACCESSPIVOT DELLA MACCHINA
-                // SENZA USCIRE DA QUESTO STATO.
-
-                // QUANDO SONO ABBASTANZA GIRATO, ENTRO IN MACCHINA
+                if (_owner.transform.rotation != _owner.CurrentCar.AccessPivot.rotation)
+                {
+                    return;
+                }
                 _owner.SetEnterCar();
                 return;
             }

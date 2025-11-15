@@ -24,9 +24,12 @@ namespace Assets.Scripts.Character
 
         public override void OnUpdate()
         {
-            // TODO: SE HO RAGGIUNTO IL PIVOT, ALLORA RUOTARE IL PERSONAGGIO FINO AL DRIVE PIVOT DELLA MACCHINA
-            // SENZA CAMBIARE STATO
+            _owner.transform.rotation = Quaternion.RotateTowards(_owner.transform.rotation, _owner.CurrentCar.DrivePivot.rotation, _owner.rotationSpeed * Time.deltaTime);
+            if (_owner.transform.rotation != _owner.CurrentCar.DrivePivot.rotation)
+            {
+                return;
 
+            }
             _timePassed += Time.deltaTime;
             if (_timePassed >= _clipLength)
             {

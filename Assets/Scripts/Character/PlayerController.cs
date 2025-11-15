@@ -34,6 +34,9 @@ public class PlayerController : MonoBehaviour, IControllable
 
     private CarControl _currentCar;
     public CarControl CurrentCar => _currentCar;
+
+    public float rotationSpeed = 30f;
+
     private void Awake()
     {
         _animator = GetComponentInChildren<Animator>();
