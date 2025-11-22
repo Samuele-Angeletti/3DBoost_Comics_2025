@@ -43,12 +43,15 @@ public class PlayerController : MonoBehaviour, IControllable
     public float MaxSpeed = 5f;
 
     Collider _capsuleCollider;
+    Camera _mainCamera;
+    public Transform CameraTransform => _mainCamera.transform;
 
     private void Awake()
     {
         _animator = GetComponentInChildren<Animator>();
         _agent = GetComponent<NavMeshAgent>();
         _capsuleCollider = GetComponent<Collider>();
+        _mainCamera = Camera.main;
 
         _agent.enabled = false;
 
@@ -121,11 +124,18 @@ public class PlayerController : MonoBehaviour, IControllable
             carMask) > 0)
         {
             // abbiamo beccato almeno 1 macchina su 4 disponibilità
-            _currentCar = results
+            var carSelected = results
                 .Where(r => r.collider != null)
                 .Select(r => r.collider.GetComponentInParent<CarControl>())
+                .Where(c => c.HasNoDriver())
                 .OrderBy(cc => Vector3.Distance(transform.position, cc.AccessPivot.position))
                 .FirstOrDefault();
+
+            if (carSelected != null)
+            {
+                carSelected.SetDriver(this);
+                _currentCar = carSelected;
+            }
         }
     }
 
@@ -183,9 +193,17 @@ public class PlayerController : MonoBehaviour, IControllable
     /// <summary>
     /// Called from external behavior used in Animator
     /// </summary>
-    public void SitCompleted()
+    public void DisableAgent()
     {
         _agent.enabled = false;
+    }
+
+    /// <summary>
+    /// Called from external behavior used in Animator
+    /// </summary>
+    public void ExitFromCar()
+    {
+        SetAgentDestination(CurrentCar.ExitPivot);
     }
 
     public void SetColliderTrigger()
@@ -196,6 +214,12 @@ public class PlayerController : MonoBehaviour, IControllable
     public void SetColliderSolid()
     {
         _capsuleCollider.isTrigger = false;
+    }
+
+    internal void ForgetCar()
+    {
+        transform.SetParent(null);
+        _currentCar = null;
     }
 }
 

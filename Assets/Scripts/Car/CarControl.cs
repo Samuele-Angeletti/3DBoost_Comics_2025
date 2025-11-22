@@ -1,4 +1,5 @@
 using Assets.Scripts.Interfaces;
+using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -8,6 +9,7 @@ namespace Assets.Scripts.Car
     {
         [field: SerializeField] public Transform AccessPivot { get; private set; }
         [field: SerializeField] public Transform DrivePivot { get; private set; }
+        [field: SerializeField] public Transform ExitPivot { get; private set; }
 
         [Header("Car Settings")]
         [SerializeField] float motorTorque = 2000f;
@@ -22,37 +24,11 @@ namespace Assets.Scripts.Car
 
         Rigidbody rigidBody;
 
-        //InputSystem_Actions inputActions;
         Vector2 inputVector;
         bool inputCanceled;
-        private void Awake()
-        {
-            //inputActions = new InputSystem_Actions();
 
-            //inputActions.Player.Move.performed += Move_performed;
-            //inputActions.Player.Move.canceled += Move_canceled;
-        }
+        PlayerController _currentDriver;
 
-        //private void Move_canceled(InputAction.CallbackContext obj)
-        //{
-            
-        //}
-
-        //private void Move_performed(InputAction.CallbackContext obj)
-        //{
-        //    inputVector = obj.ReadValue<Vector2>();
-        //    inputCanceled = false;
-        //}
-
-        //private void OnEnable()
-        //{
-        //    inputActions.Enable();
-        //}
-
-        //private void OnDisable()
-        //{
-        //    inputActions.Disable();
-        //}
         private void Update()
         {
             if (inputCanceled && rigidBody.linearVelocity.magnitude < 0.1f)
@@ -133,6 +109,21 @@ namespace Assets.Scripts.Car
         }
 
         public void Interact()
-        { }
+        {
+            GameManager.Instance.SetControllable(_currentDriver);
+            _currentDriver.SetExitCar();
+            _currentDriver = null;
+            MoveCanceled();
+        }
+        /// <summary>
+        /// Check if there is a Driver in the Car
+        /// </summary>
+        /// <returns>True if current driver is null</returns>
+        internal bool HasNoDriver() => _currentDriver == null;
+
+        internal void SetDriver(PlayerController playerController)
+        {
+            _currentDriver = playerController;
+        }
     }
 }

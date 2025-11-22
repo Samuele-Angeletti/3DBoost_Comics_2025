@@ -129035,7 +129035,7 @@ AnimationClip:
     intParameter: 0
     messageOptions: 0
   - time: 5.35
-    functionName: SitCompleted
+    functionName: DisableAgent
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0

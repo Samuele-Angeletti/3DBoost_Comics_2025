@@ -455,6 +455,7 @@ Transform:
   m_Children:
   - {fileID: 6818116033352259628}
   - {fileID: 8785952147358553383}
+  - {fileID: 4666042816508551215}
   - {fileID: 3135464068203484559}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -499,6 +500,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <AccessPivot>k__BackingField: {fileID: 8785952147358553383}
   <DrivePivot>k__BackingField: {fileID: 3135464068203484559}
+  <ExitPivot>k__BackingField: {fileID: 4666042816508551215}
   motorTorque: 2000
   brakeTorque: 2000
   maxSpeed: 20
@@ -510,6 +512,37 @@ MonoBehaviour:
   - {fileID: 632865348753062835}
   - {fileID: 1067927559372667180}
   - {fileID: 6039278511136779867}
+--- !u!1 &6344520856896625961
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4666042816508551215}
+  m_Layer: 6
+  m_Name: ExitPivot
+  m_TagString: Untagged
+  m_Icon: {fileID: 7174288486110832750, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4666042816508551215
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6344520856896625961}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0.79335177, z: -0, w: 0.6087636}
+  m_LocalPosition: {x: -1.332, y: -0.244, z: -0.445}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4328914955227064771}
+  m_LocalEulerAnglesHint: {x: 0, y: -105, z: 0}
 --- !u!1 &7380320649269236912
 GameObject:
   m_ObjectHideFlags: 0
