@@ -111,6 +111,11 @@ public class PlayerController : MonoBehaviour, IControllable
         stateMachine.OnFixedUpdate();
     }
 
+    //private void OnTriggerEnter(Collider other)
+    //{
+    //    stateMachine.OnTriggerEnter(other);
+    //}
+
     public void SetNearestCar()
     {
         RaycastHit[] results = new RaycastHit[4];

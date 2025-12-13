@@ -47,5 +47,10 @@ namespace Assets.Scripts.Character
         {
 
         }
+
+        //public override void OnTriggerEnter(Collider other)
+        //{
+        //    // per arrivare qui
+        //}
     }
 }

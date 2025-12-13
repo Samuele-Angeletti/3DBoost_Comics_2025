@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using UnityEngine;
 /// <summary>
 /// Macchina a Stati Finiti
 /// </summary>
@@ -43,7 +44,7 @@ public class GenericStateMachine<T> where T : Enum
 
     public void OnUpdate() => _currentState?.OnUpdate();
     public void OnFixedUpdate() => _currentState?.OnFixedUpdate();
-    //public void OnTriggerEnter() => _currentState?.OnTriggerEnter();
+    //public void OnTriggerEnter(Collider other) => _currentState?.OnTriggerEnter(other);
     //public void OnTriggerExit() => _currentState?.OnTriggerExit();
     //public void OnCollisionEnter() => _currentState?.OnCollisionEnter();
     //public void OnCollisionExit() => _currentState?.OnCollisionExit();
